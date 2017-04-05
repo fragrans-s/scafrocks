@@ -18,9 +18,9 @@
 
 	<div class="field", style="float:left">
 		<%= f.label 'Hand A' %>
-		<%= f.radio_button :hand_a, 1 %>Rock
-		<%= f.radio_button :hand_a, 2 %>Scissors
-		<%= f.radio_button :hand_a, 3 %>Paper
+		<%= f.radio_button :hand_a, 1 %><%= image_tag("r.png", :size => "64x64" ) %>
+		<%= f.radio_button :hand_a, 2 %><%= image_tag("s.png", :size => "64x64" ) %>
+		<%= f.radio_button :hand_a, 3 %><%= image_tag("p.png", :size => "64x64" ) %>
 	</div>
 
 
@@ -29,14 +29,17 @@
 		<%= f.text_field :name_b %>
 	</div>
 
-	<div class="field">
-		<%= f.label :hand_b %>
-		<%= f.text_field :hand_b %>
+	<div class="field", style="float:left">
+		<%= f.label 'Hand B' %>
+		<%= f.radio_button :hand_b, 1 %><%= image_tag("r.png", :size => "64x64" ) %>
+		<%= f.radio_button :hand_b, 2 %><%= image_tag("s.png", :size => "64x64" ) %>
+		<%= f.radio_button :hand_b, 3 %><%= image_tag("p.png", :size => "64x64" ) %>
 	</div>
 
 
 
-	<div class = "actions">
+
+	<div class = "actions", style="clear:both">
 		<%= f.submit 'Submit' %>
 	</div>
 
