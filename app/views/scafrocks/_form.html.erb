@@ -31,7 +31,12 @@
 
 	<div class="field", style="float:left">
 		<%= f.label 'Hand B' %>
-		<%= f.radio_button :hand_b, 1 %><%= image_tag("r.png", :size => "64x64" ) %>
+		<%= f.label 'b_r' do %>
+			<div class="hand", style="float:left">
+			<%= f.radio_button :hand_b, 1 %>
+			<%= image_tag("r.png", :size => "64x64" ) %>
+			</div>
+		<% end %>
 		<%= f.radio_button :hand_b, 2 %><%= image_tag("s.png", :size => "64x64" ) %>
 		<%= f.radio_button :hand_b, 3 %><%= image_tag("p.png", :size => "64x64" ) %>
 	</div>

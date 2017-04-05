@@ -1,29 +1,29 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name a:</strong>
   <%= @scafrock.name_a %>
 </p>
 
 <p>
-  <strong>Hand a:</strong>
-  <%= @scafrock.hand_a %>
+	<%= image_tag("#{@img_fname[@scafrock.hand_a]}.png", :size => "64x64" ) %>
 </p>
 
 <p>
-  <strong>Name b:</strong>
+	<%= @result[@numresult[0]] %>
+</p>
+
+<p>
   <%= @scafrock.name_b %>
 </p>
 
 <p>
-  <strong>Hand b:</strong>
-  <%= @scafrock.hand_b %>
+	<%= image_tag("#{@img_fname[@scafrock.hand_b]}.png", :size => "64x64" ) %>
 </p>
 
 <p>
-  <strong>Winner:</strong>
-  <%= @winner %>
+	<%= @result[@numresult[1]] %>
 </p>
+
 
 <%= link_to 'Edit', edit_scafrock_path(@scafrock) %> |
 <%= link_to 'Back', scafrocks_path %>

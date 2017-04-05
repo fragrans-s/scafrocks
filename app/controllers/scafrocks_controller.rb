@@ -10,18 +10,17 @@ class ScafrocksController < ApplicationController
   # GET /scafrocks/1
   # GET /scafrocks/1.json
   def show
+  	@img_fname = [nil, 'r', 's', 'p']
+		@result = ['Draw', 'Win!', 'Lose...']
+		@numresult = [0, 0]
 		if @scafrock.hand_a == @scafrock.hand_b and @scafrock.hand_a != nil
-			result = 0
-			@winner = 'Push'
+			@numresult = [0, 0]
 		elsif (@scafrock.hand_a == 1 and @scafrock.hand_b == 2) or (@scafrock.hand_a == 2 and @scafrock.hand_b == 3) or (@scafrock.hand_a == 3 and @scafrock.hand_b == 1)
-			result = 1
-			@winner = @scafrock.name_a
+			@numresult = [1, 2]
 		elsif (@scafrock.hand_a == 1 and @scafrock.hand_b == 3) or (@scafrock.hand_a == 2 and @scafrock.hand_b == 1) or (@scafrock.hand_a == 3 and @scafrock.hand_b == 2)
-			result = -1
-			@winner = @scafrock.name_b
+			@numresult = [2, 1]
 		else
-			result = nil
-			@winner = 'Invalid Game'
+			@numresult = [0, 0]
 		end
   end
 
@@ -56,7 +55,7 @@ class ScafrocksController < ApplicationController
 
     respond_to do |format|
       if @scafrock.save
-        format.html { redirect_to @scafrock, notice: 'Scafrock was successfully created.' }
+#        format.html { redirect_to @scafrock, notice: 'Scafrock was successfully created.' }
         format.json { render :show, status: :created, location: @scafrock }
       else
         format.html { render :new }
@@ -73,7 +72,7 @@ class ScafrocksController < ApplicationController
 		end
     respond_to do |format|
       if @scafrock.update(scafrock_params)
-        format.html { redirect_to @scafrock, notice: "Scafrock was successfully updated.  #{hand} <-" }
+#        format.html { redirect_to @scafrock, notice: "Scafrock was successfully updated.  #{hand} <-" }
         format.json { render :show, status: :ok, location: @scafrock }
       else
         format.html { render :edit }
