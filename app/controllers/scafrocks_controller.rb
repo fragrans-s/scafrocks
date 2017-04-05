@@ -49,7 +49,7 @@ class ScafrocksController < ApplicationController
 =end
 	end
 
-  # POST /scafrocks
+	# POST /scafrocks
   # POST /scafrocks.json
   def create
     @scafrock = Scafrock.new(scafrock_params)
@@ -68,9 +68,12 @@ class ScafrocksController < ApplicationController
   # PATCH/PUT /scafrocks/1
   # PATCH/PUT /scafrocks/1.json
   def update
+	if hand = params[:hand] == 'rock'
+			@scafrock.hand_a = 1
+		end
     respond_to do |format|
       if @scafrock.update(scafrock_params)
-        format.html { redirect_to @scafrock, notice: 'Scafrock was successfully updated.' }
+        format.html { redirect_to @scafrock, notice: "Scafrock was successfully updated.  #{hand} <-" }
         format.json { render :show, status: :ok, location: @scafrock }
       else
         format.html { render :edit }

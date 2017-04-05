@@ -16,12 +16,15 @@
 	<%= f.text_field :name_a %>
   </div>
 
-  <div class="field">
-	<%= f.label :hand_a %>
-	<%= f.text_field :hand_a %>
-  </div>
+	<div class="field", style="float:left">
+		<%= f.label 'Hand A' %>
+		<%= f.radio_button :hand_a, 1 %>Rock
+		<%= f.radio_button :hand_a, 2 %>Scissors
+		<%= f.radio_button :hand_a, 3 %>Paper
+	</div>
 
-	<div class="field">
+
+<div class="field", style="clear:both">
 		<%= f.label :name_b %>
 		<%= f.text_field :name_b %>
 	</div>
@@ -33,7 +36,8 @@
 
 
 
-  <div class="actions">
-	<%= f.submit %>
-  </div>
+	<div class = "actions">
+		<%= f.submit 'Submit' %>
+	</div>
+
 <% end %>
