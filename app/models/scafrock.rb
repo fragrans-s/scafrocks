@@ -1,0 +1,2 @@
+class Scafrock < ApplicationRecord
+end

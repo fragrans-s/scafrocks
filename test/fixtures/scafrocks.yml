@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name_a: MyString
+  hand_a: 9.99
+  name_b: MyString
+  hand_b: 9.99
+
+two:
+  name_a: MyString
+  hand_a: 9.99
+  name_b: MyString
+  hand_b: 9.99

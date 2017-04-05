@@ -1,0 +1,39 @@
+<%= form_for(scafrock) do |f| %>
+  <% if scafrock.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(scafrock.errors.count, "error") %> prohibited this scafrock from being saved:</h2>
+
+      <ul>
+      <% scafrock.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+	<%= f.label :name_a %>
+	<%= f.text_field :name_a %>
+  </div>
+
+  <div class="field">
+	<%= f.label :hand_a %>
+	<%= f.text_field :hand_a %>
+  </div>
+
+	<div class="field">
+		<%= f.label :name_b %>
+		<%= f.text_field :name_b %>
+	</div>
+
+	<div class="field">
+		<%= f.label :hand_b %>
+		<%= f.text_field :hand_b %>
+	</div>
+
+
+
+  <div class="actions">
+	<%= f.submit %>
+  </div>
+<% end %>

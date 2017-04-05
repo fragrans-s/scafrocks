@@ -1,0 +1,2 @@
+module ScafrocksHelper
+end
