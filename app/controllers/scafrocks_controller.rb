@@ -55,7 +55,7 @@ class ScafrocksController < ApplicationController
 
     respond_to do |format|
       if @scafrock.save
-#        format.html { redirect_to @scafrock, notice: 'Scafrock was successfully created.' }
+        format.html { redirect_to @scafrock, notice: 'Scafrock was successfully created.' }
         format.json { render :show, status: :created, location: @scafrock }
       else
         format.html { render :new }
@@ -72,7 +72,7 @@ class ScafrocksController < ApplicationController
 		end
     respond_to do |format|
       if @scafrock.update(scafrock_params)
-#        format.html { redirect_to @scafrock, notice: "Scafrock was successfully updated.  #{hand} <-" }
+        format.html { redirect_to @scafrock, notice: "Scafrock was successfully updated.  #{hand} <-" }
         format.json { render :show, status: :ok, location: @scafrock }
       else
         format.html { render :edit }

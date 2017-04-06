@@ -18,9 +18,9 @@
 
 	<div class="field", style="float:left">
 		<%= f.label 'Hand A' %>
-		<%= f.radio_button :hand_a, 1 %><%= image_tag("r.png", :size => "64x64" ) %>
-		<%= f.radio_button :hand_a, 2 %><%= image_tag("s.png", :size => "64x64" ) %>
-		<%= f.radio_button :hand_a, 3 %><%= image_tag("p.png", :size => "64x64" ) %>
+		<%= f.radio_button :hand_a, 1 %><img onClick="handleImageClick('a_1');" src="<%= asset_path "r.png" %>" width="64" height="64">
+		<%= f.radio_button :hand_a, 2 %><img onClick="handleImageClick('a_2');" src="<%= asset_path "s.png" %>" width="64" height="64">
+		<%= f.radio_button :hand_a, 3 %><img onClick="handleImageClick('a_3');" src="<%= asset_path "p.png" %>" width="64" height="64">
 	</div>
 
 
@@ -31,21 +31,27 @@
 
 	<div class="field", style="float:left">
 		<%= f.label 'Hand B' %>
-		<%= f.label 'b_r' do %>
-			<div class="hand", style="float:left">
-			<%= f.radio_button :hand_b, 1 %>
-			<%= image_tag("r.png", :size => "64x64" ) %>
-			</div>
-		<% end %>
-		<%= f.radio_button :hand_b, 2 %><%= image_tag("s.png", :size => "64x64" ) %>
-		<%= f.radio_button :hand_b, 3 %><%= image_tag("p.png", :size => "64x64" ) %>
+		<%= f.radio_button :hand_b, 1 %><img onClick="handleImageClick('b_1');" src="<%= asset_path "r.png" %>" width="64" height="64">
+		<%= f.radio_button :hand_b, 2 %><img onClick="handleImageClick('b_2');" src="<%= asset_path "s.png" %>" width="64" height="64">
+		<%= f.radio_button :hand_b, 3 %><img onClick="handleImageClick('b_3');" src="<%= asset_path "p.png" %>" width="64" height="64">
 	</div>
 
-
-
+ <!--onClick="document.getElementById('').checked=true"-->
 
 	<div class = "actions", style="clear:both">
 		<%= f.submit 'Submit' %>
 	</div>
+
+<script>
+    function handleImageClick(id) {
+
+			//console.log("I got an event. ", e);
+      var el_id = 'scafrock_hand_' + id;
+			document.getElementById(el_id).checked=true;
+     
+
+		};
+
+</script>
 
 <% end %>
