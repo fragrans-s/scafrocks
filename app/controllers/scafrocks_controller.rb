@@ -1,5 +1,6 @@
 class ScafrocksController < ApplicationController
   before_action :set_scafrock, only: [:show, :edit, :update, :destroy]
+  before_action :getparams, only: [:new, :edit]
 
   # GET /scafrocks
   # GET /scafrocks.json
@@ -10,6 +11,10 @@ class ScafrocksController < ApplicationController
   # GET /scafrocks/1
   # GET /scafrocks/1.json
   def show
+    unless (1..3) === @scafrock.hand_a and (1..3) === @scafrock.hand_b
+      redirect_to(scafrocks_path, notice: 'Please wait until all players complete.')
+    end
+    
   	@img_fname = [nil, 'r', 's', 'p']
 		@result = ['Draw', 'Win!', 'Lose...']
 		@numresult = [0, 0]
@@ -27,25 +32,13 @@ class ScafrocksController < ApplicationController
   # GET /scafrocks/new
   def new
     @scafrock = Scafrock.new
+    if @scafrock.save
+      redirect_to(edit_scafrock_path(@scafrock, player: 'a'), notice: 'New game has started.')
+    end
   end
 
   # GET /scafrocks/1/edit
   def edit
-=begin
-	if player == 1
-			@label = 'Player A'
-			@active_name = 'name_a'
-			@active_hand = 'hand_a'
-			@hidden_name = 'name_b'
-			@hidden_hand = 'hand_b'
-		elsif player == 2
-			@label = 'Player B'
-			@active_name = 'name_b'
-			@active_hand = 'hand_b'
-			@hidden_name = 'name_a'
-			@hidden_hand = 'hand_a'
-		end
-=end
 	end
 
 	# POST /scafrocks
@@ -55,7 +48,7 @@ class ScafrocksController < ApplicationController
 
     respond_to do |format|
       if @scafrock.save
-        format.html { redirect_to @scafrock, notice: 'Scafrock was successfully created.' }
+        format.html { redirect_to scafrocks_path, notice: 'New game was successfully created.' }
         format.json { render :show, status: :created, location: @scafrock }
       else
         format.html { render :new }
@@ -67,12 +60,9 @@ class ScafrocksController < ApplicationController
   # PATCH/PUT /scafrocks/1
   # PATCH/PUT /scafrocks/1.json
   def update
-	if hand = params[:hand] == 'rock'
-			@scafrock.hand_a = 1
-		end
     respond_to do |format|
       if @scafrock.update(scafrock_params)
-        format.html { redirect_to @scafrock, notice: "Scafrock was successfully updated.  #{hand} <-" }
+        format.html { redirect_to @scafrock, notice: "Scafrock was successfully updated." }
         format.json { render :show, status: :ok, location: @scafrock }
       else
         format.html { render :edit }
@@ -101,4 +91,13 @@ class ScafrocksController < ApplicationController
     def scafrock_params
       params.require(:scafrock).permit(:name_a, :hand_a, :name_b, :hand_b)
     end
+
+    def getparams
+      @sw = params[:player]
+      unless @sw == 'a' or @sw == 'b'
+        @label_name = 'invalid params'
+		  end
+      @label_name = "Player #{@sw}"
+    end
+    
 end

@@ -6,7 +6,9 @@
   <thead>
     <tr>
       <th>Name a</th>
+      <th> </th>
       <th>Name b</th>
+      <th> </th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,9 +17,10 @@
     <% @scafrocks.each do |scafrock| %>
       <tr>
         <td><%= scafrock.name_a %></td>
+        <td><%= link_to 'Play A', edit_scafrock_path(scafrock, player: 'a') %></td>
         <td><%= scafrock.name_b %></td>
-		<td><%= link_to 'Show', scafrock, player: 1 %></td>
-        <td><%= link_to 'Edit', edit_scafrock_path(scafrock) %></td>
+        <td><%= link_to 'Play B', edit_scafrock_path(scafrock, player: 'b') %></td>
+  	  	<td><%= link_to 'Show', scafrock, data: 1 %></td> 
         <td><%= link_to 'Destroy', scafrock, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
@@ -26,4 +29,4 @@
 
 <br>
 
-<%= link_to 'New Game', new_scafrock_path %>
+<%= link_to 'New Game', new_scafrock_path(player: 'a') %>

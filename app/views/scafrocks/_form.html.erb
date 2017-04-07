@@ -12,28 +12,15 @@
   <% end %>
 
   <div class="field">
-	<%= f.label :name_a %>
-	<%= f.text_field :name_a %>
+		<%= f.label "#{@label_name}" %>
+		<%= f.text_field "name_#{@sw}" %>
   </div>
 
 	<div class="field", style="float:left">
-		<%= f.label 'Hand A' %>
-		<%= f.radio_button :hand_a, 1 %><img onClick="handleImageClick('a_1');" src="<%= asset_path "r.png" %>" width="64" height="64">
-		<%= f.radio_button :hand_a, 2 %><img onClick="handleImageClick('a_2');" src="<%= asset_path "s.png" %>" width="64" height="64">
-		<%= f.radio_button :hand_a, 3 %><img onClick="handleImageClick('a_3');" src="<%= asset_path "p.png" %>" width="64" height="64">
-	</div>
-
-
-<div class="field", style="clear:both">
-		<%= f.label :name_b %>
-		<%= f.text_field :name_b %>
-	</div>
-
-	<div class="field", style="float:left">
-		<%= f.label 'Hand B' %>
-		<%= f.radio_button :hand_b, 1 %><img onClick="handleImageClick('b_1');" src="<%= asset_path "r.png" %>" width="64" height="64">
-		<%= f.radio_button :hand_b, 2 %><img onClick="handleImageClick('b_2');" src="<%= asset_path "s.png" %>" width="64" height="64">
-		<%= f.radio_button :hand_b, 3 %><img onClick="handleImageClick('b_3');" src="<%= asset_path "p.png" %>" width="64" height="64">
+		<%= f.label "Hand for #{@label_name}" %>
+		<%= f.radio_button "hand_#{@sw}", 1 %><img onClick="handleImageClick('<%= "#{@sw}_1" %>');" src="<%= asset_path "r.png" %>" width="64" height="64">
+		<%= f.radio_button "hand_#{@sw}", 2 %><img onClick="handleImageClick('<%= "#{@sw}_2" %>');" src="<%= asset_path "s.png" %>" width="64" height="64">
+		<%= f.radio_button "hand_#{@sw}", 3 %><img onClick="handleImageClick('<%= "#{@sw}_3" %>');" src="<%= asset_path "p.png" %>" width="64" height="64">
 	</div>
 
 	<div class = "actions", style="clear:both">
@@ -43,7 +30,7 @@
 <script>
     function handleImageClick(id) {
 
-			//console.log("I got an event. ", e);
+			console.log("I got an event. ", id);
       var el_id = 'scafrock_hand_' + id;
 			document.getElementById(el_id).checked=true;
      
